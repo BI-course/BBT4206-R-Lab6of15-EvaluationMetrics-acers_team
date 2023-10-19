@@ -4,7 +4,7 @@
 # Course Code: BBT4206
 # Course Name: Business Intelligence II
 # Semester Duration: 21st August 2023 to 28th November 2023
-#
+# Date Issued: Wednesday, October 18, 2023
 # Lecturer: Allan Omondi
 # Contact: aomondi [at] strathmore.edu
 #
@@ -168,6 +168,7 @@ if (require("dplyr")) {
                    repos = "https://cloud.r-project.org")
 }
 
+
 # 1. Accuracy and Cohen's Kappa ----
 ## 1.a. Load the dataset ----
 data(PimaIndiansDiabetes)
@@ -209,10 +210,10 @@ train_control <- trainControl(method = "cv", number = 5)
 # `set.seed()` is a function that is used to specify a starting point for the
 # random number generator to a specific value. This ensures that every time you
 # run the same code, you will get the same "random" numbers.
-set.seed(7)
+set.seed(7) #you can use any values the point is to introduce the randomness 
 diabetes_model_glm <-
   train(diabetes ~ ., data = pima_indians_diabetes_train, method = "glm",
-        metric = "Accuracy", trControl = train_control)
+        metric = "Accuracy", trControl = train_control) #all other variables ~ .
 
 ## 1.e. Display the Model's Performance ----
 ### Option 1: Use the metric calculated by caret when training the model ----
@@ -320,7 +321,7 @@ print(paste("SST =", sst))
 r_squared <- 1 - (ssr / sst)
 print(paste("R Squared =", r_squared))
 
-#### MAE ----
+#### MAE ---- // Gives a range of prediction ex: with an accuracy of 85%. +-3.9
 # MAE measures the average absolute differences between the predicted and
 # actual values in a dataset. MAE is useful for assessing how close the model's
 # predictions are to the actual values.
