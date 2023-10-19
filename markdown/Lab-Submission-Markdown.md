@@ -2,6 +2,7 @@
 editor_options: 
   markdown: 
     wrap: 72
+  chunk_output_type: console
 output: 
   html_document: 
     keep_md: yes
@@ -17,32 +18,36 @@ output: github_document: toc: yes toc_depth: 4 fig_width: 6 fig_height:
 
 # Student Details
 
-+-----------------------+----------------------------------------------+
-| **Student ID Numbers  | *\<list one student name, group, and ID per  |
-| and Names of Group    | line; you should be between 2 and 5 members  |
-| Members**             | per group\>*                                 |
-|                       |                                              |
-|                       | 1.  122790 - C - Bwalley Nicholas            |
-|                       |                                              |
-|                       | 2.  133834 - C - Mongare Sarah               |
-|                       |                                              |
-|                       | 3.  133928 - C - Cheptoi Millicent           |
-|                       |                                              |
-|                       | 4.  134879 - C - Tulienge Lesley             |
-|                       |                                              |
-|                       | 5.  124461 - C - Kinya Angela                |
-+-----------------------+----------------------------------------------+
-| **GitHub Classroom    | Acers Team                                   |
-| Group Name**          |                                              |
-+-----------------------+----------------------------------------------+
-| **Course Code**       | BBT4206                                      |
-+-----------------------+----------------------------------------------+
-| **Course Name**       | Business Intelligence II                     |
-+-----------------------+----------------------------------------------+
-| **Program**           | Bachelor of Business Information Technology  |
-+-----------------------+----------------------------------------------+
-| **Semester Duration** | 21^st^ August 2023 to 28^th^ November 2023   |
-+-----------------------+----------------------------------------------+
++----------------------------------+----------------------------------+
+| **Student ID Numbers and Names   | *\<list one student name, group, |
+| of Group Members**               | and ID per line; you should be   |
+|                                  | between 2 and 5 members per      |
+|                                  | group\>*                         |
+|                                  |                                  |
+|                                  | 1.  122790 - C - Bwalley         |
+|                                  |     Nicholas                     |
+|                                  |                                  |
+|                                  | 2.  133834 - C - Mongare Sarah   |
+|                                  |                                  |
+|                                  | 3.  133928 - C - Cheptoi         |
+|                                  |     Millicent                    |
+|                                  |                                  |
+|                                  | 4.  134879 - C - Tulienge Lesley |
+|                                  |                                  |
+|                                  | 5.  124461 - C - Kinya Angela    |
++----------------------------------+----------------------------------+
+| **GitHub Classroom Group Name**  | Acers Team                       |
++----------------------------------+----------------------------------+
+| **Course Code**                  | BBT4206                          |
++----------------------------------+----------------------------------+
+| **Course Name**                  | Business Intelligence II         |
++----------------------------------+----------------------------------+
+| **Program**                      | Bachelor of Business Information |
+|                                  | Technology                       |
++----------------------------------+----------------------------------+
+| **Semester Duration**            | 21^st^ August 2023 to 28^th^     |
+|                                  | November 2023                    |
++----------------------------------+----------------------------------+
 
 # Understanding the Dataset (Exploratory Data Analysis (EDA))
 
@@ -50,7 +55,8 @@ output: github_document: toc: yes toc_depth: 4 fig_width: 6 fig_height:
 
 ### Source:
 
-The dataset that was used can be downloaded here: <https://www.kaggle.com/datasets/bharath011/heart-disease-classification-dataset>*
+The dataset that was used can be downloaded here:
+<https://www.kaggle.com/datasets/bharath011/heart-disease-classification-dataset>\*
 
 ### Reference:
 
@@ -60,7 +66,7 @@ Refer to the APA 7th edition manual for rules on how to cite datasets:
 
 # STEP 1. Install and Load the Required Packages ----
 
-```r
+``` r
 ## ggplot2 ----
 if (require("ggplot2")) {
   require("ggplot2")
@@ -70,11 +76,11 @@ if (require("ggplot2")) {
 }
 ```
 
-```
+```         
 ## Loading required package: ggplot2
 ```
 
-```r
+``` r
 ## caret ----
 if (require("caret")) {
   require("caret")
@@ -84,15 +90,15 @@ if (require("caret")) {
 }
 ```
 
-```
+```         
 ## Loading required package: caret
 ```
 
-```
+```         
 ## Loading required package: lattice
 ```
 
-```r
+``` r
 ## mlbench ----
 if (require("mlbench")) {
   require("mlbench")
@@ -102,11 +108,11 @@ if (require("mlbench")) {
 }
 ```
 
-```
+```         
 ## Loading required package: mlbench
 ```
 
-```r
+``` r
 ## pROC ----
 if (require("pROC")) {
   require("pROC")
@@ -116,26 +122,26 @@ if (require("pROC")) {
 }
 ```
 
-```
+```         
 ## Loading required package: pROC
 ```
 
-```
+```         
 ## Type 'citation("pROC")' for a citation.
 ```
 
-```
+```         
 ## 
 ## Attaching package: 'pROC'
 ```
 
-```
+```         
 ## The following objects are masked from 'package:stats':
 ## 
 ##     cov, smooth, var
 ```
 
-```r
+``` r
 ## dplyr ----
 if (require("dplyr")) {
   require("dplyr")
@@ -145,37 +151,37 @@ if (require("dplyr")) {
 }
 ```
 
-```
+```         
 ## Loading required package: dplyr
 ```
 
-```
+```         
 ## 
 ## Attaching package: 'dplyr'
 ```
 
-```
+```         
 ## The following objects are masked from 'package:stats':
 ## 
 ##     filter, lag
 ```
 
-```
+```         
 ## The following objects are masked from 'package:base':
 ## 
 ##     intersect, setdiff, setequal, union
 ```
 
-
 # 1. Accuracy and Cohen's Kappa ----
+
 ## 1.a. Load the dataset ----
 
-```r
+``` r
 library(readr)
 heart_attack_dataset <- read_csv("C:/Users/NICK BWALLEY/OneDrive - Strathmore University/MyStrath/BBIT/4.2/Business Intelligence II - Dr. Allan Omondi/BI2-Labs/BBT4206-R-Lab6of15-EvaluationMetrics-acers_team/data/heart_attack_dataset.csv")
 ```
 
-```
+```         
 ## Rows: 1319 Columns: 9
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: ","
@@ -186,7 +192,7 @@ heart_attack_dataset <- read_csv("C:/Users/NICK BWALLEY/OneDrive - Strathmore Un
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
-```r
+``` r
 View(heart_attack_dataset)
 # data(heart_attack_dataset) 
 # sapply(heart_attack_dataset, class) #datatypes of variables
@@ -199,13 +205,13 @@ cbind(frequency =
       percentage = prop.table(table(heart_attack_dataset_freq)) * 100)
 ```
 
-```
+```         
 ##          frequency percentage
 ## negative       509   38.58984
 ## positive       810   61.41016
 ```
 
-```r
+``` r
 ## 1.c. Split the dataset ----
 # Define a 75:25 train:test data split of the dataset.
 # That is, 75% of the original data will be used to train the model and
@@ -231,7 +237,7 @@ class_model_glm <-
         metric = "Accuracy", trControl = train_control) #all other variables ~ .
 ```
 
-```
+```         
 ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
 
 ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
@@ -245,13 +251,13 @@ class_model_glm <-
 ## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
 ```
 
-```r
+``` r
 ## 1.e. Display the Model's Performance ----
 ### Option 1: Use the metric calculated by caret when training the model ----
 print(class_model_glm)
 ```
 
-```
+```         
 ## Generalized Linear Model 
 ## 
 ## 990 samples
@@ -264,22 +270,23 @@ print(class_model_glm)
 ## Resampling results:
 ## 
 ##   Accuracy   Kappa    
-##   0.9414185  0.8780879
+##   0.8252609  0.6360275
 ```
 
 # 2. RMSE, R Squared, and MAE ----
 
-```r
+``` r
 # PLEASE NOTE: 
 ## THIS STEP IS NOT APPLICABLE IN OUR DATASET SO IN THIS SECTION WE ARE NOT GOING TO PERFORM THE COMPUTATIONS IN THIS SECTION. 
 ```
 
 # 3. Area Under ROC Curve ----
+
 Area Under Receiver Operating Characteristic Curve (AUROC) or simply
 "Area Under Curve (AUC)" or "ROC" represents a model's ability to
 discriminate between two classes.
 
-```r
+``` r
 ## 3.b. Determine the Baseline Accuracy ----
 heart_attack_dataset_freq <- heart_attack_dataset$class
 cbind(frequency =
@@ -287,13 +294,13 @@ cbind(frequency =
       percentage = prop.table(table(heart_attack_dataset_freq)) * 100)
 ```
 
-```
+```         
 ##          frequency percentage
 ## negative       509   38.58984
 ## positive       810   61.41016
 ```
 
-```r
+``` r
 ## 3.c. Split the dataset ----
 # Define an 80:20 train:test data split of the dataset.
 train_index <- createDataPartition(heart_attack_dataset$class,
@@ -320,7 +327,7 @@ class_model_knn <-
 print(class_model_knn)
 ```
 
-```
+```         
 ## k-Nearest Neighbors 
 ## 
 ## 1056 samples
@@ -341,7 +348,7 @@ print(class_model_knn)
 ## The final value used for the model was k = 9.
 ```
 
-```r
+``` r
 #### AUC ----
 # The type = "prob" argument specifies that you want to obtain class
 # probabilities as the output of the prediction instead of class labels.
@@ -352,7 +359,7 @@ predictions <- predict(class_model_knn, heart_attack_dataset_test[, 1:8],
 print(predictions)
 ```
 
-```
+```         
 ##      negative  positive
 ## 1   0.1111111 0.8888889
 ## 2   0.0000000 1.0000000
@@ -619,30 +626,29 @@ print(predictions)
 ## 263 0.2222222 0.7777778
 ```
 
-```r
+``` r
 roc_curve <- roc(heart_attack_dataset_test$class, predictions$neg)
 ```
 
-```
+```         
 ## Setting levels: control = negative, case = positive
 ```
 
-```
+```         
 ## Setting direction: controls > cases
 ```
 
-```r
+``` r
 # Plot the ROC curve
 plot(roc_curve, main = "ROC Curve for KNN Model", print.auc = TRUE,
      print.auc.x = 0.6, print.auc.y = 0.6, col = "blue", lwd = 2.5)
 ```
 
-![](Lab-Submission-Markdown_files/figure-html/code chunk 3-1.png)<!-- -->
-
+![](Lab-Submission-Markdown_files/figure-html/code%20chunk%203-1.png)<!-- -->
 
 # 4. Logarithmic Loss (LogLoss) ----
 
-```r
+``` r
 ## 4.a. Load the dataset ----
 ## 4.b. Train the Model ----
 # We apply the 5-fold repeated cross validation resampling method
@@ -662,7 +668,7 @@ heart_model_cart <- train(class ~ ., data = heart_attack_dataset, method = "rpar
 print(heart_model_cart)
 ```
 
-```
+```         
 ## CART 
 ## 
 ## 1319 samples
@@ -683,10 +689,9 @@ print(heart_model_cart)
 ## The final value used for the model was cp = 0.006876228.
 ```
 
-
 # 5. References ----
 
-```r
+``` r
 ## Kuhn, M., Wing, J., Weston, S., Williams, A., Keefer, C., Engelhardt, A., Cooper, T., Mayer, Z., Kenkel, B., R Core Team, Benesty, M., Lescarbeau, R., Ziem, A., Scrucca, L., Tang, Y., Candan, C., & Hunt, T. (2023). caret: Classification and Regression Training (6.0-94) [Computer software]. https://cran.r-project.org/package=caret # nolint ----
 
 ## Leisch, F., & Dimitriadou, E. (2023). mlbench: Machine Learning Benchmark Problems (2.1-3.1) [Computer software]. https://cran.r-project.org/web/packages/mlbench/index.html # nolint ----
@@ -698,5 +703,3 @@ print(heart_model_cart)
 
 ## Wickham, H., Chang, W., Henry, L., Pedersen, T. L., Takahashi, K., Wilke, C., Woo, K., Yutani, H., Dunnington, D., Posit, & PBC. (2023). ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics (3.4.3) [Computer software]. https://cran.r-project.org/package=ggplot2 # nolint ----
 ```
-
-
