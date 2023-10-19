@@ -87,9 +87,9 @@ print(class_model_glm)
 #THIS WILL NOT APPLY IN THIS SECTION. 
 
 # 3. Area Under ROC Curve ----
-# Area Under Receiver Operating Characteristic Curve (AUROC) or simply
-# "Area Under Curve (AUC)" or "ROC" represents a model's ability to
-# discriminate between two classes.
+## Area Under Receiver Operating Characteristic Curve (AUROC) or simply
+## "Area Under Curve (AUC)" or "ROC" represents a model's ability to
+## discriminate between two classes.
 
 ## 3.b. Determine the Baseline Accuracy ----
 heart_attack_dataset_freq <- heart_attack_dataset$class
