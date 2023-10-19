@@ -7,7 +7,7 @@ editor_options:
 ------------------------------------------------------------------------
 
 title: "Business Intelligence Lab Submission Markdown" author: "Acers
-Team" date: "11/10/2023"
+Team" date: "October 19, 2023"
 
 output: github_document: toc: yes toc_depth: 4 fig_width: 6 fig_height:
 4 df_print: default editor_options: chunk_output_type: console ---
@@ -47,7 +47,7 @@ output: github_document: toc: yes toc_depth: 4 fig_width: 6 fig_height:
 
 ### Source:
 
-The dataset that was used can be downloaded here: *\https://www.kaggle.com/datasets/bharath011/heart-disease-classification-dataset\>*
+The dataset that was used can be downloaded here: <https://www.kaggle.com/datasets/bharath011/heart-disease-classification-dataset>*
 
 ### Reference:
 
