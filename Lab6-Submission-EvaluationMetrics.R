@@ -128,6 +128,19 @@ class_model_knn <-
 
 print(class_model_knn)
 
+### Option 2: Compute the metric yourself using the test dataset ----
+#### Sensitivity and Specificity ----
+predictions <- predict(class_model_knn, heart_attack_dataset_test[, 1:8])
+# These are the values for diabetes that the
+# model has predicted:
+print(predictions)
+confusion_matrix <-
+  caret::confusionMatrix(predictions,
+                         heart_attack_dataset_test[, 1:9]$class)
+
+# We can see the sensitivity (≈ 0.86) and the specificity (≈ 0.60) below:
+print(confusion_matrix)
+
 
 #### AUC ----
 # The type = "prob" argument specifies that you want to obtain class
